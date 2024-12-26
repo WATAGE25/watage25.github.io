@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>FACTRI-GAME</title>
+    <style>
+        canvas {
+          border: 1px solid black;
+        }
+    </style>
+    
+  </head>
+  <body>
+<canvas id="canvas" width="300" height="300">
+    factri-game-canvas
+</canvas>
+    <script>
+        let variable = 0;
+        let zahyou = 1;
+
+        function RandomInt(max) {
+        return Math.floor(Math.random() * max);
+        }
+
+        document.querySelector("html").addEventListener("mousedown", function () {
+            variable = variable + 15;
+            
+            zahyou = zahyou + RandomInt(15);
+            
+            if (RandomInt(3) == 1){
+            zahyou = zahyou - 15;
+            }
+
+            const canvas = document.querySelector("canvas");
+            const ctx = canvas.getContext("2d");
+            //console.log(ctx);
+            ctx.clearRect(0,0,300,300)
+            ctx.LineWidth = 5;
+            ctx.fillRect(zahyou,zahyou,50,50);
+        })
+    </script>
+  </body>
+</html>
